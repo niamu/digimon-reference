@@ -121,15 +121,15 @@
                        (conj accl
                              (merge reference
                                     {:reference/id id
-                                     :reference/lang lang
+                                     :reference/language lang
                                      :reference/name (-> (get-in v [0 "data"])
                                                          string/trim)})))))
                  [(merge reference
                          {:reference/id (str "ja/" s)
-                          :reference/lang :ja})
+                          :reference/language :ja})
                   (merge reference
                          {:reference/id (str "romaji/" romaji)
-                          :reference/lang :en
+                          :reference/language :en
                           :reference/name romaji})]))))
 
 (defn book
