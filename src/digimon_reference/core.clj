@@ -115,15 +115,15 @@
          (sort-by key)
          (reduce (fn [accl [k v]]
                    (let [lang (keyword (string/replace k #"zh.*" "zh"))
-                         id (str (name lang) "/" s)]
+                         digimon-name (string/trim (get-in v [0 "data"]))
+                         id (str (name lang) "/" digimon-name)]
                      (if (contains? (set (map :reference/id accl)) id)
                        accl
                        (conj accl
                              (merge reference
                                     {:reference/id id
                                      :reference/language lang
-                                     :reference/name (-> (get-in v [0 "data"])
-                                                         string/trim)})))))
+                                     :reference/name digimon-name})))))
                  [(merge reference
                          {:reference/id (str "ja/" s)
                           :reference/language :ja})
