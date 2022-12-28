@@ -72,8 +72,7 @@
   (loop [next 0
          rows []]
     (let [j (-> (http-get "https://digimon.net/reference/request.php"
-                          {:headers {"X-Requested-With"
-                                     "XMLHttpRequest"}
+                          {:headers {"X-Requested-With" "XMLHttpRequest"}
                            :query-params {:digimon_name nil
                                           :name nil
                                           :digimon_level nil
@@ -84,7 +83,7 @@
       (if (pos? (:next j))
         (recur (:next j)
                (concat rows (:rows j)))
-        rows))))
+        (concat rows (:rows j))))))
 
 (defn- wovnio-key
   []
@@ -140,4 +139,4 @@
 
 (defn -main
   [& args]
-  (book))
+  (clojure.pprint/pprint (book)))
