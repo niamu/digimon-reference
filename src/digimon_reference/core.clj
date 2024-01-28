@@ -10,7 +10,8 @@
 (def reference-suffix-by-language
   {:ja ""
    :en "_en"
-   :zh "_zh-CHS"})
+   :zh "_zh-CHS"
+   :ko "_ko"})
 
 (defn- http-post
   ([url]
